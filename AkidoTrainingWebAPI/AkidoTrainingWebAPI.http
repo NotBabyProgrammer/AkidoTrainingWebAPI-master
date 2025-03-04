@@ -1,0 +1,6 @@
+@AkidoTrainingWebAPI_HostAddress = http://localhost:5208
+
+GET {{AkidoTrainingWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
