@@ -7,7 +7,6 @@ using MimeKit.Text;
 using MimeKit;
 using MailKit.Net.Smtp;
 using AkidoTrainingWebAPI.BusinessLogic.DTOs.DistrictsDTO;
-using AkidoTrainingWebAPI.Migrations;
 
 namespace AkidoTrainingWebAPI.BusinessLogic.Repositories
 {
