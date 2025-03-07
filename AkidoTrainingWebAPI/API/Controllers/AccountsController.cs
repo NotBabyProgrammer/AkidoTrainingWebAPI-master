@@ -138,7 +138,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
                 return NotFound("User or image not found.");
             }
 
-            var uploadsDirectory = Path.Combine("C:", "API", "Avatar");
+            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "API", "Avatar");
             var imagePath = Path.Combine(uploadsDirectory, account.ImagePath);
 
             if (!System.IO.File.Exists(imagePath))
@@ -189,7 +189,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
                 var extension = Path.GetExtension(image.FileName);
                 filename = phone + extension;
 
-                var filepath = Path.Combine("C:", "API", "Avatar");
+                var filepath = Path.Combine(Directory.GetCurrentDirectory(), "API", "Avatar");
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -213,7 +213,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
         {
             try
             {
-                var deleteFile = Path.Combine("C:", "API", "Avatar", avatarPath);
+                var deleteFile = Path.Combine(Directory.GetCurrentDirectory(), "API", "Avatar", avatarPath);
                 if (System.IO.File.Exists(deleteFile))
                 {
                     System.IO.File.Delete(deleteFile);

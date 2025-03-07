@@ -19,8 +19,8 @@ namespace AkidoTrainingWebAPI.API.Controllers
     public class ContentsController : ControllerBase
     {
         private readonly AkidoTrainingWebAPIContext _context;
-        private readonly string _videoStoragePath = Path.Combine("C:", "API", "Videos");
-        private readonly string _imageStoragePath = Path.Combine("C:", "API", "Image");
+        private readonly string _videoStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "API", "Videos");
+        private readonly string _imageStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "API", "Image");
 
         public ContentsController(AkidoTrainingWebAPIContext context)
         {

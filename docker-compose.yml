@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   postgres:
     image: postgres:latest
@@ -12,20 +14,27 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - productnetwork
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   webapi:
     build:
-      context: ./AkidoTrainingWebAPI
+      context: .
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8080:8080"
       - "8081:8081"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=postgres;Database=AkidoTrainingWebAPIContext;Username=postgres;Password=Linh1234!@#$"
     networks:
-      productnetwork:
+      - productnetwork
     restart: on-failure
 
 networks:

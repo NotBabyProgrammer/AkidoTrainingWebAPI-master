@@ -122,7 +122,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
                 return NotFound("Area or image not found.");
             }
 
-            var uploadsDirectory = Path.Combine("C:", "API", "Area", $"{area.District}");
+            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "API", "Area", $"{area.District}");
             var imagePath = Path.Combine(uploadsDirectory, area.ImagePath);
 
             if (!System.IO.File.Exists(imagePath))
@@ -170,7 +170,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
                 var extension = Path.GetExtension(image.FileName);
                 filename = name + extension;
 
-                var filepath = Path.Combine("C:", "API", "Area", $"{district}");
+                var filepath = Path.Combine(Directory.GetCurrentDirectory(), "API", "Area", $"{district}");
                 if (!Directory.Exists(filepath))
                 {
                     Directory.CreateDirectory(filepath);
@@ -194,7 +194,7 @@ namespace AkidoTrainingWebAPI.API.Controllers
         {
             try
             {
-                var deleteFile = Path.Combine("C:", "API", "Area", $"{district}", imagePath);
+                var deleteFile = Path.Combine(Directory.GetCurrentDirectory(), "API", "Area", $"{district}", imagePath);
                 if (System.IO.File.Exists(deleteFile))
                 {
                     System.IO.File.Delete(deleteFile);
